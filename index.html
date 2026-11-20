@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#eee9dc" />
+  <meta name="description" content="可環繞觀看的《勞山道士》水墨 3D 場景" />
+  <title>勞山道士・穿牆</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <main class="stage" aria-label="勞山道士互動水墨場景">
+    <canvas id="scene" aria-label="使用滑鼠拖曳環繞場景，滾輪縮放；不可平移。"></canvas>
+    <header class="title-card">
+      <span class="eyebrow">聊齋志異・勞山道士</span>
+      <h1>穿牆</h1>
+      <p>王七學道，試穿仙家之牆</p>
+    </header>
+    <aside class="controls" aria-label="操作說明">
+      <span class="mouse-icon" aria-hidden="true">⟲</span>
+      <span>拖曳環視 <b>·</b> 滾輪縮放</span>
+      <button id="reset-view" type="button">重設視角</button>
+    </aside>
+    <div class="caption" aria-live="polite">牆那邊，老道正含笑看著他。</div>
+    <div class="loader" id="loader">潑墨成景…</div>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
+
