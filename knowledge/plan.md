@@ -9,6 +9,8 @@
 - 已完成初版網頁 3D 場景與滑鼠環繞、縮放操作。
 - 已建立 GitHub Actions Pages 部署 workflow。
 - GitHub repository `ccshfaaa/wall` 已建立並同步專案檔案。
+- 已建立 `knowledge/experience.md` 與 `knowledge/decision.md`，記錄可重用實作經驗和 Pages 設定建議。
+- 已在 `work/wall` clone 建立 knowledge 文件的本機 commit；目前 GitHub connector 可讀寫 repo，但本機 Git 缺少 push 憑證，commit 尚未由 `git push` 推上去。
 - Pages 的發布來源與首次部署仍待設定和確認。
 - 場景角色與環境目前由幾何模型組成，是可互動原型，仍需視覺打磨。
 
@@ -19,9 +21,13 @@
 - [x] 建立 Three.js 互動場景原型與固定焦點的環繞縮放控制，停用平移。
 - [x] 建立 GitHub Actions workflow，自 main 分支部署靜態檔案至 GitHub Pages。
 - [x] 撰寫本機預覽與 Pages 設定說明。
+- [x] 建立經驗紀錄，註明未來可用的範圍。
+- [x] 建立決策紀錄，為 Pages 設定列出推薦方案和目前阻礙。
+- [x] 建立 `work/wall` 本機 clone，為 knowledge 文件建立 Git commit。
 
 ### 待完成
 - [x] 建立 GitHub repository `ccshfaaa/wall` 並同步專案檔案。
+- [ ] 將本機 Git commit 推送到 `origin/main`；目前環境缺少可用的 GitHub push 憑證。
 - [ ] 在 repository 設定 Pages 使用 GitHub Actions。
 - [ ] 確認 Actions 部署成功並取得公開頁面網址。
 - [ ] 檢視不同螢幕大小與鏡頭角度，調整場景層次、背景銜接和互動手感。
