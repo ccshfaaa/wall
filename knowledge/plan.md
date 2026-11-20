@@ -8,11 +8,11 @@
 ### 目前狀態
 - 已完成初版網頁 3D 場景與滑鼠環繞、縮放操作。
 - 已建立 GitHub Actions Pages 部署 workflow。
-- GitHub repository `ccshfaaa/wall` 已建立並同步專案檔案。
+- GitHub repository `ccshfaaa/wall` 已建立，最新場景與 knowledge 檔案已同步到 `main`。
 - 已建立 `knowledge/experience.md` 與 `knowledge/decision.md`，記錄可重用實作經驗和 Pages 設定建議。
-- 已在 `work/wall` clone 建立本輪本機 commit `9ed6806`；本機 Git 缺少 push 憑證，直接 `git push` 失敗，最新場景與 knowledge 內容待經 GitHub 連線同步。
+- 已在 `work/wall` clone 建立本輪本機 commit `9ed6806`；本機 Git 缺少 push 憑證，直接 `git push` 失敗。已用已授權 GitHub connector 將相同檔案內容提交到遠端；本機與遠端 commit SHA 不同。
 - 已加上程序化水墨紋理、封閉式屋脊和道士轉角揭露；1280×720 預覽已確認初始畫面、左右約 90 度視角和滾輪縮放。
-- Pages 的發布來源與首次部署仍待設定和確認。
+- GitHub Actions run #10 部署成功；公開 Pages 網址已確認可載入場景。
 - 場景角色與環境目前由幾何模型組成，是可互動原型，仍需視覺打磨。
 
 ### 已完成
@@ -28,13 +28,13 @@
 - [x] 為本輪場景與文件修改建立 Git commit `9ed6806`。
 - [x] 加上程序化水墨紋理、屋脊面和道士轉角揭露提示。
 - [x] 以 1280×720 預覽確認初始視角、左右約 90 度視角與滾輪縮放。
+- [x] 將本輪場景與 knowledge 更新同步至 GitHub `main`（GitHub connector 建立遠端 commits）。
+- [x] 以 GitHub Actions 部署至 Pages，並從公開網址確認場景成功載入。
 
 ### 待完成
 - [x] 建立 GitHub repository `ccshfaaa/wall` 並同步專案檔案。
-- [ ] 將本機 Git commit 推送到 `origin/main`；目前環境缺少可用的 GitHub push 憑證。
-- [ ] 在 repository 設定 Pages 使用 GitHub Actions。
-- [ ] 確認 Actions 部署成功並取得公開頁面網址。
-- [ ] 檢視不同螢幕尺寸與更多鏡頭角度，調整場景層次、背景銜接和操作手感。
+- [ ] 在可用的 Git 認證環境中 fetch/pull 遠端 connector commits，恢復本機與 `origin/main` 的單一 Git 歷史（目前直接 push 缺少憑證）。
+- [ ] 檢視行動裝置與其他畫面比例，調整自適應構圖和操作手感。
 - [ ] 以更完整的角色造型和水墨材質打磨目前幾何原型。
 
 
