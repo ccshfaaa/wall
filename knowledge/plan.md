@@ -10,7 +10,8 @@
 - 已建立 GitHub Actions Pages 部署 workflow。
 - GitHub repository `ccshfaaa/wall` 已建立並同步專案檔案。
 - 已建立 `knowledge/experience.md` 與 `knowledge/decision.md`，記錄可重用實作經驗和 Pages 設定建議。
-- 已在 `work/wall` clone 建立 knowledge 文件的本機 commit；目前 GitHub connector 可讀寫 repo，但本機 Git 缺少 push 憑證，commit 尚未由 `git push` 推上去。
+- 已在 `work/wall` clone 建立本輪本機 commit `9ed6806`；本機 Git 缺少 push 憑證，直接 `git push` 失敗，最新場景與 knowledge 內容待經 GitHub 連線同步。
+- 已加上程序化水墨紋理、封閉式屋脊和道士轉角揭露；1280×720 預覽已確認初始畫面、左右約 90 度視角和滾輪縮放。
 - Pages 的發布來源與首次部署仍待設定和確認。
 - 場景角色與環境目前由幾何模型組成，是可互動原型，仍需視覺打磨。
 
@@ -24,12 +25,16 @@
 - [x] 建立經驗紀錄，註明未來可用的範圍。
 - [x] 建立決策紀錄，為 Pages 設定列出推薦方案和目前阻礙。
 - [x] 建立 `work/wall` 本機 clone，為 knowledge 文件建立 Git commit。
+- [x] 為本輪場景與文件修改建立 Git commit `9ed6806`。
+- [x] 加上程序化水墨紋理、屋脊面和道士轉角揭露提示。
+- [x] 以 1280×720 預覽確認初始視角、左右約 90 度視角與滾輪縮放。
 
 ### 待完成
 - [x] 建立 GitHub repository `ccshfaaa/wall` 並同步專案檔案。
 - [ ] 將本機 Git commit 推送到 `origin/main`；目前環境缺少可用的 GitHub push 憑證。
 - [ ] 在 repository 設定 Pages 使用 GitHub Actions。
 - [ ] 確認 Actions 部署成功並取得公開頁面網址。
-- [ ] 檢視不同螢幕大小與鏡頭角度，調整場景層次、背景銜接和互動手感。
+- [ ] 檢視不同螢幕尺寸與更多鏡頭角度，調整場景層次、背景銜接和操作手感。
 - [ ] 以更完整的角色造型和水墨材質打磨目前幾何原型。
+
 
