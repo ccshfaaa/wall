@@ -8,7 +8,8 @@
 ### 目前狀態
 - 已完成初版網頁 3D 場景與滑鼠環繞、縮放操作。
 - 已建立 GitHub Actions Pages 部署 workflow。
-- 尚未建立或連接 GitHub 遠端 repo，Pages 尚未發布。
+- GitHub repository `ccshfaaa/wall` 已建立並同步專案檔案。
+- Pages 的發布來源與首次部署仍待設定和確認。
 - 場景角色與環境目前由幾何模型組成，是可互動原型，仍需視覺打磨。
 
 ### 已完成
@@ -20,7 +21,7 @@
 - [x] 撰寫本機預覽與 Pages 設定說明。
 
 ### 待完成
-- [ ] 建立 GitHub repository 並推送專案。
+- [x] 建立 GitHub repository `ccshfaaa/wall` 並同步專案檔案。
 - [ ] 在 repository 設定 Pages 使用 GitHub Actions。
 - [ ] 確認 Actions 部署成功並取得公開頁面網址。
 - [ ] 檢視不同螢幕大小與鏡頭角度，調整場景層次、背景銜接和互動手感。
