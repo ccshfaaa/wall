@@ -17,10 +17,11 @@
 - **依據：** 使用者指定初始看王七和牆，轉 90 度後看到道士。
 - **適用範圍：** 此場景的固定構圖與鏡頭揭露順序；未來若重排人物，應重新檢查初始和左右側視圖。
 
-## 待完成的外部設定（已有使用者確認）
+## 已完成的外部設定
 
 ### GitHub Pages 發布來源
-- **推薦：** 在 `ccshfaaa/wall` 的 Settings → Pages → Build and deployment 將 Source 設為 GitHub Actions，接著重新執行 workflow。
-- **理由：** 目前 workflow 使用官方 `configure-pages`、`upload-pages-artifact` 和 `deploy-pages` actions；首次啟用 Pages 需要管理權限。GitHub connector 沒有 Pages 設定寫入操作，瀏覽器工作階段也未登入，因此此設定尚未完成。
-- **狀態：** 使用者已明確確認要切換；等待可操作的已登入 GitHub 設定工作階段或管理權限 API。
+- **決定：** 由 GitHub Actions 發布靜態網站。
+- **依據：** `ccshfaaa/wall` 的 workflow run #10 中 `Configure Pages`、`Upload static site` 和 `Deploy to GitHub Pages` 均成功；公開頁面已實際載入場景。
+- **適用範圍：** 此 repo 的 `main` 分支更新部署。
+- **網址：** https://ccshfaaa.github.io/wall/
 
