@@ -14,5 +14,5 @@ python -m http.server 8000
 
 ## GitHub Pages
 
-此 repo 使用 GitHub Actions 發布靜態網站。第一次啟用 Pages 時，請在 **Settings → Pages → Build and deployment** 選擇 **GitHub Actions**；之後推送到 `main`，workflow 會部署網站。
+互動場景已發布：[開啟 GitHub Pages](https://ccshfaaa.github.io/wall/)。GitHub Actions 會在 `main` 更新時重新部署。
 
