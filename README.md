@@ -14,5 +14,5 @@ python -m http.server 8000
 
 ## GitHub Pages
 
-此 repo 使用 GitHub Actions 發布靜態網站。推送到 `main` 後，workflow 會部署到 GitHub Pages。建立 repo 後請在 **Settings → Pages → Build and deployment** 選擇 **GitHub Actions**。
+此 repo 使用 GitHub Actions 發布靜態網站。第一次啟用 Pages 時，請在 **Settings → Pages → Build and deployment** 選擇 **GitHub Actions**；之後推送到 `main`，workflow 會部署網站。
 
