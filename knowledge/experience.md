@@ -39,3 +39,13 @@
 - **適用範圍：** 固定展示台、環繞相機或有指定揭露角度的 3D 場景。應另外檢查不同畫面尺寸；本次只實際確認 1280×720 預覽。
 - **本次發現：** 把道士置於牆後可讓初始畫面聚焦王七；屋頂幾何需封住屋脊面，避免側視角看到開口；提示文字應在兩個環繞方向都能更新。
 
+## 用 GitHub connector 同步受限環境的本機 commit
+
+- **經驗：** 本機 Git commit 建立成功，但 Git push 因沒有可用的 credential 被拒。使用者已授權的 GitHub connector 可按檔案更新 remote，並逐檔 fetch 比對內容確認同步；這會建立 remote commits，但 commit SHA 不會等於本機 commit，也不應稱為 CLI `git push`。
+- **適用範圍：** 本機 push credential 無法取得、但已授權 GitHub connector 有 repo 寫入權限時的短期替代方案。後續若需要正常 Git 歷史，應在可用的認證環境中 fetch/pull 這些 remote commits 後再繼續。
+
+## GitHub Pages 發布驗收
+
+- **經驗：** 將靜態場景部署成 Pages 後，除了檢查 Actions job 成功，也要在公開 Pages URL 實際載入頁面，確認 ES module、相對路徑和互動 canvas 都正常。
+- **適用範圍：** GitHub Pages 靜態網站；本次 Actions run #10 成功，公開 URL 可載入 3D 場景。
+
