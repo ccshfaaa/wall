@@ -108,14 +108,15 @@ for(let i=0;i<15;i++) {
   mountain(x*.93,z*.93,.65+(i%3)*.26,1.1+(i%2)*.45,i%3===0?greyInk:paper,a+.3);
 }
 // Bamboo thicket behind the characters.
-for(const [x,z,h] of [[-2.9,-1.9,3.15],[-2.45,-2.5,3.6],[-1.85,-2.9,3.25],[-3.45,-2.8,2.7],[2.9,-2.9,3.1],[3.45,-2.35,3.5],[2.45,-3.15,2.8]]) {
-  const lean=(x<0?-.12:.1);
-  const pts=[]; for(let j=0;j<=6;j++) pts.push([x+lean*j/6,j*h/6,z]);
+for(const [index,[x,z,h]] of [[-2.9,-1.9,3.15],[-2.45,-2.5,3.6],[-1.85,-2.9,3.25],[-3.45,-2.8,2.7],[2.9,-2.9,3.1],[3.45,-2.35,3.5],[2.45,-3.15,2.8]].entries()) {
+  const lean=(x<0?-.12:.1), bend=(index%2?-.09:.1)*(x<0?1:-1);
+  const stemX=t=>x+lean*t+bend*Math.sin(t*Math.PI);
+  const pts=[]; for(let j=0;j<=6;j++) pts.push([stemX(j/6),j*h/6,z]);
   inkLine(pts,.043,darkInk);
   for(let j=1;j<6;j++) {
-    const yy=j*h/6; inkLine([[x+lean*j/6-.09,yy,z],[x+lean*j/6+.09,yy,z]],.025,ink);
+    const yy=j*h/6, nodeX=stemX(j/6); inkLine([[nodeX-.09,yy,z],[nodeX+.09,yy,z]],.025,ink);
   }
-  for(let j=2;j<6;j+=2) leafCluster(x+lean*j/6,h*j/6,z,j);
+  for(let j=2;j<6;j+=2) leafCluster(stemX(j/6),h*j/6,z,j+index*.7);
 }
 
 // Daoist temple on the left rear side; connected wall runs toward the teaching scene.
