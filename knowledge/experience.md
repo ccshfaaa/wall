@@ -48,7 +48,8 @@
 ## GitHub Pages 發布驗收
 
 - **經驗：** 將靜態場景部署成 Pages 後，除了檢查 Actions job 成功，也要在公開 Pages URL 實際載入頁面，確認 ES module、相對路徑和互動 canvas 都正常。
-- **適用範圍：** GitHub Pages 靜態網站；Actions run #23 成功，公開 URL 已確認載入含鍵盤操作提示的 3D 場景，且頁面無瀏覽器載入錯誤。
+- **適用範圍：** GitHub Pages 靜態網站；Actions run #26 成功，公開 URL 已確認載入含鍵盤操作提示的 3D 場景，且頁面無瀏覽器載入錯誤。
+- **排錯補充：** run #24 的 artifact 上傳成功，但 `deploy-pages` 隨即回報找不到名為 `github-pages` 的 artifact；後續 #25、#26 部署成功。若只有單次發生且下一次部署成功，可先記錄並確認公開頁面；若重複發生，再檢查 Actions／Pages artifact 狀態和服務健康，不要先改動場景程式。
 
 ## 窄螢幕 Three.js 構圖與觸控縮放
 
