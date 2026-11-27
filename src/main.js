@@ -147,6 +147,12 @@ for(let i=-5;i<=5;i++) {
   inkLine([[x,1.73,1.04],[x*.8+wobble,1.91,.84],[x*.54+wobble*.5,2.2,.57]],i%2?.007:.008,greyInk,temple);
   inkLine([[x,1.73,-1.04],[x*.8-wobble,1.91,-.84],[x*.54-wobble*.5,2.2,-.57]],i%2?.007:.008,greyInk,temple);
 }
+// Faint crosswise seams keep the roof reading as layered tiles, not metal panels.
+for(const t of [.25,.5,.75]) {
+  const y=1.7+t*.52, edge=1.48*(1-t)+.78*t, z=1.01-t*.46;
+  inkLine([[-edge,y,z],[0,y+.006*Math.sin(t*9),z],[edge,y,z]],.006,greyInk,temple);
+  inkLine([[-edge,y,-z],[0,y-.006*Math.sin(t*9),-z],[edge,y,-z]],.006,greyInk,temple);
+}
 // Temple side corridor, making the wall visibly continuous with the structure.
 box(2.55,1.65,.28,wallMat,root,-.72,.81,.7);
 box(.13,1.9,.42,ink,root,-1.96,.95,.7);
