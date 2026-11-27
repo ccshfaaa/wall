@@ -269,7 +269,8 @@ canvas.addEventListener('pointerdown', e=>{
 const caption=document.querySelector('.caption');
 function updateCaption(){
   const sideView=Math.abs(Math.cos(spherical.theta))<.35;
-  caption.textContent=sideView?'老道士袖手含笑，王七這才察覺身後有人。':'仙牆紋絲不動，王七探手一試。';
+  const teacherVisible=sideView&&Math.sin(spherical.theta)>0;
+  caption.textContent=teacherVisible?'老道士袖手含笑，王七這才察覺身後有人。':sideView?'屋頂遮住道士了，轉向另一側便能看見他。':'仙牆紋絲不動，王七探手一試。';
 }
 updateCaption();
 canvas.addEventListener('pointermove', e=>{
