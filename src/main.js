@@ -234,6 +234,18 @@ const pointers=new Map();
 let drag=null, pinchDistance=0;
 function updateCamera() { camera.position.setFromSpherical(spherical).add(target); camera.lookAt(target); }
 updateCamera();
+canvas.addEventListener('keydown', e=>{
+  const angle=.08, zoom=1.12;
+  if(e.key==='ArrowLeft') spherical.theta+=angle;
+  else if(e.key==='ArrowRight') spherical.theta-=angle;
+  else if(e.key==='ArrowUp') spherical.phi=THREE.MathUtils.clamp(spherical.phi-angle,.42,1.72);
+  else if(e.key==='ArrowDown') spherical.phi=THREE.MathUtils.clamp(spherical.phi+angle,.42,1.72);
+  else if(e.key==='+'||e.key==='=') spherical.radius=THREE.MathUtils.clamp(spherical.radius/zoom,5.7,15);
+  else if(e.key==='-') spherical.radius=THREE.MathUtils.clamp(spherical.radius*zoom,5.7,15);
+  else if(e.key==='Home') { spherical.set(9.8,1.12,.06); }
+  else return;
+  e.preventDefault(); updateCamera(); updateCaption();
+});
 function distanceBetweenPointers(){
   const [a,b]=pointers.values();
   return Math.hypot(a.x-b.x,a.y-b.y);
