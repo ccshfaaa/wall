@@ -165,12 +165,22 @@ coneBetween([.23,1.03,-.02],[.42,1.08,-.43],.09,robe,wang);
 coneBetween([.42,1.08,-.43],[.4,1.08,-.72],.055,skin,wang,7);
 // trousers, boots
 for(const x of [-.14,.14]) { cylinder(.075,.11,.42,ink,wang,x,.22,0,8); box(.16,.1,.28,darkInk,wang,x,.06,-.07); }
-// expressive eyes, brows and nose on the turned head
+// A narrow sash and dry-brush folds give the plain robe a readable silhouette.
+const wangSash=mesh(new THREE.TorusGeometry(.3,.018,6,32),darkInk,wang,0,.68,0);
+wangSash.rotation.x=Math.PI/2; wangSash.scale.z=.72;
+inkLine([[-.16,.91,-.24],[-.21,.65,-.28],[-.13,.34,-.31]],.009,greyInk,wang);
+inkLine([[.13,.89,-.24],[.17,.62,-.28],[.1,.35,-.31]],.009,greyInk,wang);
+inkLine([[-.24,.75,-.23],[-.09,.68,-.3],[.08,.71,-.3],[.23,.78,-.23]],.008,greyInk,wang);
+// expressive eyes, raised brows and an open mouth on the turned head
 for(const x of [-.065,.065]) {
-  sphere(.022,.025,.018,darkInk,wangHead,x,.02,-.16);
-  inkLine([[x-.035,.08,-.15],[x,.095,-.17],[x+.035,.08,-.15]],.014,darkInk,wangHead);
+  sphere(.035,.033,.02,paper,wangHead,x,.02,-.155);
+  sphere(.014,.021,.012,darkInk,wangHead,x,.018,-.177);
+  inkLine([[x-.04,.09,-.15],[x,.12,-.17],[x+.04,.09,-.15]],.014,darkInk,wangHead);
 }
-sphere(.024,.035,.026,skin,wangHead,0,-.025,-.185);
+sphere(.025,.035,.026,skin,wangHead,0,-.025,-.185);
+sphere(.038,.05,.022,darkInk,wangHead,0,-.105,-.164);
+sphere(.018,.023,.012,skin,wangHead,0,-.101,-.181);
+sphere(.065,.08,.065,darkInk,wangHead,0,.17,.015);
 
 // Taoist teacher is staged a quarter turn from the opening view, visible after orbiting.
 const taoist = new THREE.Group(); root.add(taoist); taoist.position.set(.15,0,-.8); taoist.rotation.y=-Math.PI/2; taoist.scale.set(.84,.84,.84);
@@ -178,17 +188,27 @@ cylinder(.37,.46,1.05,robeLight,taoist,0,.73,0,10).scale.z=.72;
 const taoistHead=new THREE.Group(); taoist.add(taoistHead); taoistHead.position.set(0,1.43,0);
 sphere(.2,.21,.2,skin,taoistHead,0,0,0);
 cylinder(.08,.2,.2,darkInk,taoistHead,0,.21,0,9); cylinder(.19,.24,.055,ink,taoistHead,0,.13,0,12);
+mesh(new THREE.SphereGeometry(.13,16,10,0,Math.PI*2,0,Math.PI/2),darkInk,taoistHead,0,.31,0);
 for(const x of [-.07,.07]) {
-  sphere(.018,.022,.015,darkInk,taoistHead,x,.015,-.18);
+  sphere(.028,.026,.017,paper,taoistHead,x,.015,-.175);
+  sphere(.012,.018,.01,darkInk,taoistHead,x,.014,-.192);
   inkLine([[x-.035,.07,-.16],[x,.085,-.19],[x+.035,.07,-.16]],.012,darkInk,taoistHead);
 }
 coneBetween([-.08,-.05,-.12],[0,-.4,-.17],.09,greyInk,taoistHead,7);
+inkLine([[-.12,-.075,-.15],[-.055,-.105,-.19],[0,-.09,-.2],[.055,-.105,-.19],[.12,-.075,-.15]],.018,darkInk,taoistHead);
+inkLine([[-.025,-.15,-.19],[0,-.29,-.19],[.025,-.15,-.19]],.008,paper,taoistHead);
 // sleeves and beard
 coneBetween([-.32,1.0,0],[-.46,.76,-.18],.11,robeLight,taoist);
 coneBetween([.32,1.0,0],[.5,1.05,-.1],.11,robeLight,taoist);
 for(const x of [-.15,.15]) { cylinder(.08,.11,.42,darkInk,taoist,x,.22,0,8); box(.17,.09,.27,darkInk,taoist,x,.06,-.04); }
 // gently lifted hand, as if indicating the secret
 sphere(.07,.07,.07,skin,taoist,.52,1.07,-.1);
+ sphere(.07,.065,.07,skin,taoist,-.47,.75,-.18);
+const taoistSash=mesh(new THREE.TorusGeometry(.29,.016,6,32),darkInk,taoist,0,.63,0);
+taoistSash.rotation.x=Math.PI/2; taoistSash.scale.z=.72;
+inkLine([[-.18,1.08,-.22],[-.12,.82,-.28],[-.22,.48,-.29]],.008,greyInk,taoist);
+inkLine([[.18,1.08,-.22],[.12,.84,-.28],[.2,.5,-.29]],.008,greyInk,taoist);
+inkLine([[-.27,.88,-.2],[-.08,.75,-.29],[.1,.79,-.29],[.28,.91,-.2]],.008,greyInk,taoist);
 
 // A few ink-stone accents ground the tableau.
 for(const [x,z,s] of [[-1.4,2.8,.48],[1.35,-1.1,.36],[3.35,.45,.58],[-3.5,.65,.5]]) {

@@ -10,9 +10,10 @@
 - 已建立 GitHub Actions Pages 部署 workflow。
 - GitHub repository `ccshfaaa/wall` 已建立，最新場景與 knowledge 檔案已同步到 `main`。
 - 已建立 `knowledge/experience.md` 與 `knowledge/decision.md`，記錄可重用實作經驗和 Pages 設定建議。
-- 已在 `work/wall` clone 建立本輪本機 commit `9ed6806`；本機 Git 缺少 push 憑證，直接 `git push` 失敗。已用已授權 GitHub connector 將相同檔案內容提交到遠端；本機與遠端 commit SHA 不同。
+- 本機 commit `98f1b74` 已完成行動版階段；直接 `git push` 因環境沒有 GitHub 認證失敗。已用授權的 GitHub connector 將相同檔案內容提交到遠端 `main`（commit `72f48a3`），兩端 SHA 不同。
 - 已加上程序化水墨紋理、封閉式屋脊和道士轉角揭露；1280×720 預覽已確認初始畫面、左右約 90 度視角和滾輪縮放。
 - 已調整直式視野與窄螢幕文案位置，加入雙指捏合縮放；在 390×844、844×390、1280×720 瀏覽器視窗檢查版面，拖曳揭露和重設視角可用。
+- 已為王七補上張口驚訝表情、腰帶和衣褶，為道士補上冠帽、鬍鬚和袍褶；行動版操作列會顯示單指環視與雙指縮放提示。
 - GitHub Actions run #10 部署成功；公開 Pages 網址已確認可載入場景。
 - 場景角色與環境目前由幾何模型組成，是可互動原型，仍需視覺打磨。
 
@@ -31,6 +32,8 @@
 - [x] 以 1280×720 預覽確認初始視角、左右約 90 度視角與滾輪縮放。
 - [x] 檢視直式、橫式行動版與 16:9 畫面，調整自適應構圖和操作提示。
 - [x] 為行動裝置加入雙指捏合縮放，保留單指環繞和固定焦點。
+- [x] 以幾何和墨線加強兩名角色的表情與袍服辨識度。
+- [x] 依螢幕寬度顯示對應的滑鼠或觸控操作提示。
 - [x] 將本輪場景與 knowledge 更新同步至 GitHub `main`（GitHub connector 建立遠端 commits）。
 - [x] 以 GitHub Actions 部署至 Pages，並從公開網址確認場景成功載入。
 
