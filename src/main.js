@@ -184,6 +184,8 @@ for(const x of [-.14,.14]) { cylinder(.075,.11,.42,ink,wang,x,.22,0,8); box(.16,
 // A narrow sash and dry-brush folds give the plain robe a readable silhouette.
 const wangSash=mesh(new THREE.TorusGeometry(.3,.018,6,32),darkInk,wang,0,.68,0);
 wangSash.rotation.x=Math.PI/2; wangSash.scale.z=.72;
+inkLine([[-.14,1.12,-.18],[-.04,.96,-.25],[.1,.88,-.27],[.2,.93,-.24]],.011,greyInk,wang);
+inkLine([[.14,1.12,-.18],[.04,.97,-.25],[-.1,.89,-.27],[-.2,.94,-.24]],.011,greyInk,wang);
 inkLine([[-.16,.91,-.24],[-.21,.65,-.28],[-.13,.34,-.31]],.009,greyInk,wang);
 inkLine([[.13,.89,-.24],[.17,.62,-.28],[.1,.35,-.31]],.009,greyInk,wang);
 inkLine([[-.24,.75,-.23],[-.09,.68,-.3],[.08,.71,-.3],[.23,.78,-.23]],.008,greyInk,wang);
@@ -222,6 +224,8 @@ sphere(.07,.07,.07,skin,taoist,.52,1.07,-.1);
  sphere(.07,.065,.07,skin,taoist,-.47,.75,-.18);
 const taoistSash=mesh(new THREE.TorusGeometry(.29,.016,6,32),darkInk,taoist,0,.63,0);
 taoistSash.rotation.x=Math.PI/2; taoistSash.scale.z=.72;
+inkLine([[-.16,1.24,-.2],[-.04,1.04,-.3],[.11,.94,-.32],[.22,1.0,-.27]],.01,greyInk,taoist);
+inkLine([[.16,1.24,-.2],[.04,1.05,-.3],[-.11,.95,-.32],[-.22,1.01,-.27]],.01,greyInk,taoist);
 inkLine([[-.18,1.08,-.22],[-.12,.82,-.28],[-.22,.48,-.29]],.008,greyInk,taoist);
 inkLine([[.18,1.08,-.22],[.12,.84,-.28],[.2,.5,-.29]],.008,greyInk,taoist);
 inkLine([[-.27,.88,-.2],[-.08,.75,-.29],[.1,.79,-.29],[.28,.91,-.2]],.008,greyInk,taoist);
