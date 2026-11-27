@@ -48,7 +48,7 @@
 ## GitHub Pages 發布驗收
 
 - **經驗：** 將靜態場景部署成 Pages 後，除了檢查 Actions job 成功，也要在公開 Pages URL 實際載入頁面，確認 ES module、相對路徑和互動 canvas 都正常。
-- **適用範圍：** GitHub Pages 靜態網站；本次 Actions run #10 成功，公開 URL 可載入 3D 場景。
+- **適用範圍：** GitHub Pages 靜態網站；Actions run #23 成功，公開 URL 已確認載入含鍵盤操作提示的 3D 場景，且頁面無瀏覽器載入錯誤。
 
 ## 窄螢幕 Three.js 構圖與觸控縮放
 
