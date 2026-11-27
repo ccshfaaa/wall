@@ -199,23 +199,62 @@ for(const [x,z,s] of [[-1.4,2.8,.48],[1.35,-1.1,.36],[3.35,.45,.58],[-3.5,.65,.5
 // Orbit-only camera: rotation and zoom enabled; panning is deliberately impossible.
 const target=new THREE.Vector3(0,1.05,0);
 const spherical=new THREE.Spherical(9.8,1.12,0.06);
-let down=null, pointerId=null;
+const pointers=new Map();
+let drag=null, pinchDistance=0;
 function updateCamera() { camera.position.setFromSpherical(spherical).add(target); camera.lookAt(target); }
 updateCamera();
-canvas.addEventListener('pointerdown', e=>{ down={x:e.clientX,y:e.clientY}; pointerId=e.pointerId; canvas.setPointerCapture(pointerId); });
+function distanceBetweenPointers(){
+  const [a,b]=pointers.values();
+  return Math.hypot(a.x-b.x,a.y-b.y);
+}
+canvas.addEventListener('pointerdown', e=>{
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  canvas.setPointerCapture(e.pointerId);
+  if(pointers.size===1) drag={id:e.pointerId,x:e.clientX,y:e.clientY};
+  else if(pointers.size===2){ drag=null; pinchDistance=distanceBetweenPointers(); }
+});
 const caption=document.querySelector('.caption');
 function updateCaption(){
   const sideView=Math.abs(Math.cos(spherical.theta))<.35;
   caption.textContent=sideView?'老道士袖手含笑，王七這才察覺身後有人。':'仙牆紋絲不動，王七探手一試。';
 }
 updateCaption();
-canvas.addEventListener('pointermove', e=>{ if(!down||e.pointerId!==pointerId)return; const dx=e.clientX-down.x, dy=e.clientY-down.y; down={x:e.clientX,y:e.clientY}; spherical.theta-=dx*.006; spherical.phi=THREE.MathUtils.clamp(spherical.phi+dy*.005,.42,1.72); updateCamera(); updateCaption(); });
-function endDrag(){ down=null; pointerId=null; }
-canvas.addEventListener('pointerup',endDrag); canvas.addEventListener('pointercancel',endDrag);
+canvas.addEventListener('pointermove', e=>{
+  if(!pointers.has(e.pointerId)) return;
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pointers.size>=2){
+    const nextDistance=distanceBetweenPointers();
+    if(pinchDistance>0&&nextDistance>0) spherical.radius=THREE.MathUtils.clamp(spherical.radius*pinchDistance/nextDistance,5.7,15);
+    pinchDistance=nextDistance;
+    updateCamera();
+    return;
+  }
+  if(!drag||e.pointerId!==drag.id)return;
+  const dx=e.clientX-drag.x, dy=e.clientY-drag.y;
+  drag={id:e.pointerId,x:e.clientX,y:e.clientY};
+  spherical.theta-=dx*.006;
+  spherical.phi=THREE.MathUtils.clamp(spherical.phi+dy*.005,.42,1.72);
+  updateCamera(); updateCaption();
+});
+function endPointer(e){
+  pointers.delete(e.pointerId);
+  if(pointers.size===1){ const [id,p]=pointers.entries().next().value; drag={id,x:p.x,y:p.y}; }
+  else if(pointers.size===0) drag=null;
+  pinchDistance=pointers.size===2?distanceBetweenPointers():0;
+}
+canvas.addEventListener('pointerup',endPointer); canvas.addEventListener('pointercancel',endPointer);
 canvas.addEventListener('wheel',e=>{e.preventDefault(); spherical.radius=THREE.MathUtils.clamp(spherical.radius*Math.exp(e.deltaY*.001),5.7,15); updateCamera();},{passive:false});
 document.querySelector('#reset-view').addEventListener('click',()=>{ spherical.theta=.06; spherical.phi=1.12; spherical.radius=9.8; updateCamera(); updateCaption(); });
 
-function resize() { const w=canvas.clientWidth,h=canvas.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.fov=35; camera.updateProjectionMatrix(); }
+function resize() {
+  const w=canvas.clientWidth,h=canvas.clientHeight;
+  renderer.setSize(w,h,false);
+  camera.aspect=w/h;
+  const aspect=camera.aspect;
+  camera.fov=aspect<16/9?THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(35)/2)*(16/9)/aspect)):35;
+  camera.fov=Math.min(camera.fov,68);
+  camera.updateProjectionMatrix();
+}
 new ResizeObserver(resize).observe(canvas); resize();
 function animate(){ requestAnimationFrame(animate); renderer.render(scene,camera); }
 animate();
