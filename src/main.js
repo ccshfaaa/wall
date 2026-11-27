@@ -18,6 +18,7 @@ const key = new THREE.DirectionalLight('#fff8e9', 3.1);
 key.position.set(-5, 10, 7);
 key.castShadow = true;
 key.shadow.mapSize.set(2048, 2048);
+key.shadow.radius = 8;
 scene.add(key);
 const fill = new THREE.DirectionalLight('#d8ddd5', 1.05);
 fill.position.set(6, 5, -7);
