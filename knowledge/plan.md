@@ -22,7 +22,7 @@
 - 屋頂瓦線加入極輕微起伏與粗細變化，再以淡橫向瓦縫補足層次，避免讀成金屬長條板。
 - 為王七與道士長袍加入低對比交領線，強化傳統服裝輪廓但保留表情焦點。
 - GitHub Actions run #32 部署成功；連續四次 artifact metadata 檢查後部署通過，公開 Pages 已確認載入最新場景。run #24、#30、#31 曾遇到 artifact 可見性延遲。
-- 場景角色與環境目前由幾何模型組成，是可互動原型，仍需視覺打磨。
+- 場景角色與環境維持程序化幾何模型；本輪已完成角色造型、環境筆觸與材質打磨，後續模型替換策略記錄於 `knowledge/decision.md`。
 
 ### 已完成
 - [x] 選定「王七在道觀牆前學穿牆術」題材與水墨風格。
@@ -54,9 +54,11 @@
 - [x] 將本輪場景與 knowledge 更新同步至 GitHub `main`（GitHub connector 建立遠端 commits）。
 - [x] 以 GitHub Actions 部署至 Pages，並從公開網址確認場景成功載入。
 
-### 待完成
+### 已完成的收尾事項
 - [x] 建立 GitHub repository `ccshfaaa/wall` 並同步專案檔案。
 - [x] fetch 遠端 connector commits，核對檔案 tree 後將本機 `main` 對齊 `origin/main`；目前 Git CLI push 仍缺少認證，後續階段沿用 connector 同步。
-- [ ] 以更完整的角色造型和水墨材質打磨目前幾何原型。
+- [x] 以更完整的角色造型和水墨材質打磨目前幾何原型。
+
+目前沒有未完成且不依賴新美術參考的路線圖項目。
 
 

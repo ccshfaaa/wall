@@ -21,7 +21,7 @@
 
 ### GitHub Pages 發布來源
 - **決定：** 由 GitHub Actions 發布靜態網站。
-- **依據：** `ccshfaaa/wall` 的 workflow run #23 部署成功；公開頁面已實際載入含鍵盤操作的場景。
+- **依據：** `ccshfaaa/wall` 的 workflow run #34 部署成功；公開頁面已實際載入含鍵盤操作的場景。
 - **適用範圍：** 此 repo 的 `main` 分支更新部署。
 - **網址：** https://ccshfaaa.github.io/wall/
 
