@@ -56,6 +56,7 @@ const robe = new THREE.MeshStandardMaterial({ map:makeWashTexture('#5b635d',['#2
 const robeLight = new THREE.MeshStandardMaterial({ map:makeWashTexture('#949486',['#53594f','#c3bfae','#e1d9c8'],61), roughness:1 });
 const skin = new THREE.MeshStandardMaterial({ color: '#c4aa8d', roughness: 1 });
 const groundMat = new THREE.MeshStandardMaterial({ map:makeWashTexture('#dcd6c8',['#a9aa9d','#c3bdae','#eee9dd'],79), roughness:1 });
+const stoneLight = new THREE.MeshStandardMaterial({ color:'#c7c4b8', roughness:1 });
 const root = new THREE.Group();
 scene.add(root);
 
@@ -222,7 +223,8 @@ inkLine([[-.27,.88,-.2],[-.08,.75,-.29],[.1,.79,-.29],[.28,.91,-.2]],.008,greyIn
 // A few ink-stone accents ground the tableau.
 for(const [x,z,s] of [[-1.4,2.8,.48],[1.35,-1.1,.36],[3.35,.45,.58],[-3.5,.65,.5]]) {
   sphere(s*.9,s*.48,s*.65,greyInk,root,x,.12,z);
-  sphere(s*.55,s*.32,s*.42,paper,root,x+.12,.2,z-.04);
+  const highlight=sphere(s*.43,s*.2,s*.34,stoneLight,root,x+.08,.19,z-.03);
+  highlight.rotation.y=x*.17;
 }
 
 // Orbit-only camera: rotation and zoom enabled; panning is deliberately impossible.
