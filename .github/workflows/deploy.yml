@@ -34,12 +34,19 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          visible_checks=0
           for attempt in $(seq 1 10); do
             if artifact_count="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts" --jq '[.artifacts[] | select(.name == "github-pages" and .expired == false)] | length' 2>/dev/null)" && [ "$artifact_count" -gt 0 ]; then
-              echo "Pages artifact metadata is available."
-              exit 0
+              visible_checks=$((visible_checks + 1))
+              echo "Pages artifact visible (${visible_checks}/4 consecutive checks)."
+              if [ "$visible_checks" -ge 4 ]; then
+                echo "Pages artifact metadata is stable."
+                exit 0
+              fi
+            else
+              visible_checks=0
+              echo "Pages artifact not visible yet (attempt ${attempt}/10)."
             fi
-            echo "Pages artifact not visible yet (attempt ${attempt}/10)."
             sleep 3
           done
           echo "Pages artifact metadata did not appear in time." >&2

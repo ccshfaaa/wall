@@ -50,7 +50,7 @@
 - **經驗：** 將靜態場景部署成 Pages 後，除了檢查 Actions job 成功，也要在公開 Pages URL 實際載入頁面，確認 ES module、相對路徑和互動 canvas 都正常。
 - **驗收範圍：** Actions run #29 成功，公開 URL 已確認載入含鍵盤操作提示的 3D 場景，且頁面無瀏覽器載入錯誤。
 - **排錯補充：** run #24 的 artifact 上傳成功，但 `deploy-pages` 隨即回報找不到名為 `github-pages` 的 artifact；後續 #25、#26 部署成功。若只有單次發生且下一次部署成功，可先記錄並確認公開頁面；若重複發生，再檢查 Actions／Pages artifact 狀態和服務健康，不要先改動場景程式。
-- **修復補充：** 同類錯誤再次出現在 run #30，因此 workflow 在 `deploy-pages` 前輪詢本次 run 的 Actions artifacts API，等待 `github-pages` metadata 出現後才部署；為此加入 `actions: read` 權限。若輪詢仍逾時，應檢查 token 權限和 Actions artifact API，而非重試場景程式。
+- **修復補充：** 同類錯誤再次出現在 run #30。run #31 的 Actions artifacts API 已回報 artifact 可見，但 `deploy-pages` 約一秒後仍找不到它，顯示不同 API 查詢路徑間仍有傳播延遲。workflow 現在要求同一 artifact 連續四次可見（每次間隔 3 秒）後才部署，並加入 `actions: read` 權限；此延遲修正仍待新的 workflow run 驗證。
 - **適用範圍：** 使用 `upload-pages-artifact` 接續 `deploy-pages` 的 GitHub Actions Pages 流程，尤其在 artifact metadata 有短暫傳播延遲時。
 
 ## 窄螢幕 Three.js 構圖與觸控縮放
