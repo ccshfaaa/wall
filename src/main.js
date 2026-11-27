@@ -50,7 +50,7 @@ const darkInk = new THREE.MeshStandardMaterial({ color: '#202621', roughness: 1 
 const greyInk = new THREE.MeshStandardMaterial({ color: '#72766d', roughness: 1 });
 const paper = new THREE.MeshStandardMaterial({ map:makeWashTexture('#f7f3e8',['#c7c0ad','#d8d1bf','#eee7d8'],17), roughness:1 });
 const wallMat = new THREE.MeshStandardMaterial({ map:makeWashTexture('#e8e2d4',['#bdb6a6','#d2cabc','#f5f0e4'],29), roughness:1 });
-const dryBrush = new THREE.MeshStandardMaterial({ color:'#777b72', roughness:1, transparent:true, opacity:.3, depthWrite:false });
+const dryBrush = new THREE.MeshStandardMaterial({ color:'#777b72', roughness:1, transparent:true, opacity:.2, depthWrite:false });
 const robe = new THREE.MeshStandardMaterial({ map:makeWashTexture('#5b635d',['#28342f','#879087','#c0bcae'],43), roughness:1 });
 const robeLight = new THREE.MeshStandardMaterial({ map:makeWashTexture('#949486',['#53594f','#c3bfae','#e1d9c8'],61), roughness:1 });
 const skin = new THREE.MeshStandardMaterial({ color: '#c4aa8d', roughness: 1 });
@@ -81,10 +81,10 @@ function leafCluster(x,y,z,seed=0) {
   }
 }
 
-// Softly raised, ink-wash display ground, with a fixed scenic arrangement.
-mesh(new THREE.CylinderGeometry(5.55,5.75,.32,96),groundMat,root,0,-.18,0);
-mesh(new THREE.CylinderGeometry(5.56,5.56,.025,96),paper,root,0,-.005,0);
-const ground = mesh(new THREE.CircleGeometry(5.5,96),groundMat,root,0,.012,0); ground.rotation.x=-Math.PI/2;
+// A broad ink-wash ground keeps the scene connected to the distant mountains.
+mesh(new THREE.CylinderGeometry(22,22.2,.32,128),groundMat,root,0,-.18,0);
+mesh(new THREE.CylinderGeometry(22.01,22.01,.025,128),paper,root,0,-.005,0);
+const ground = mesh(new THREE.CircleGeometry(21.95,128),groundMat,root,0,.012,0); ground.rotation.x=-Math.PI/2;
 // Brush-like pale washes across the ground.
 for(let i=0;i<9;i++) {
   const wash=mesh(new THREE.CircleGeometry(.7+(i%3)*.32,32),new THREE.MeshBasicMaterial({color:i%2?'#bdbbae':'#c9c6b9',transparent:true,opacity:.09,depthWrite:false}),root,-2.7+i*.66,.022,-1.8+(i%4)*.66);
@@ -153,11 +153,10 @@ box(2.8,.12,.48,greyInk,root,-.72,1.77,.7);
 box(.72,1.7,.75,wallMat,root,-1.91,.83,.15);
 // Sparse dry-brush marks sit near the edges so the wall stays open behind Wang Qi.
 const wallFaceZ=.848;
-for(const [x,shift] of [[-1.82,0],[-1.48,.12],[-.02,-.08],[.3,.05]]) {
-  inkLine([[x,.27,wallFaceZ],[x+.035,.52+shift,wallFaceZ],[x-.025,.86+shift,wallFaceZ],[x+.025,1.18+shift,wallFaceZ],[x-.01,1.48,wallFaceZ]],.014,dryBrush);
+for(const [x,shift] of [[-1.86,0],[-1.56,.04]]) {
+  inkLine([[x,.3,wallFaceZ],[x+.02,.45+shift,wallFaceZ],[x-.02,.63+shift,wallFaceZ],[x+.015,.82+shift,wallFaceZ],[x,.98,wallFaceZ]],.009,dryBrush);
 }
-inkLine([[-1.96,.38,wallFaceZ],[-1.83,.42,wallFaceZ],[-1.72,.39,wallFaceZ]],.018,dryBrush);
-inkLine([[.34,.48,wallFaceZ],[.46,.44,wallFaceZ],[.53,.5,wallFaceZ]],.018,dryBrush);
+inkLine([[-1.96,.38,wallFaceZ],[-1.87,.41,wallFaceZ],[-1.79,.39,wallFaceZ]],.012,dryBrush);
 
 // Wang Qi, facing the wall. Stylized solid forms keep the scene readable from orbit.
 const wang = new THREE.Group(); root.add(wang); wang.position.set(.05,0,1.45);
