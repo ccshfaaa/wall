@@ -143,9 +143,9 @@ box(.11,.09,1.95,darkInk,temple,-1.47,1.7,0);
 box(.11,.09,1.95,darkInk,temple,1.47,1.7,0);
 inkLine([[-.78,2.23,-.55],[.78,2.23,-.55]],.035,darkInk,temple);
 for(let i=-5;i<=5;i++) {
-  const x=i*.22;
-  inkLine([[x,1.73,1.04],[x*.54,2.2,.57]],.009,greyInk,temple);
-  inkLine([[x,1.73,-1.04],[x*.54,2.2,-.57]],.009,greyInk,temple);
+  const x=i*.22, wobble=Math.sin(i*1.7)*.018;
+  inkLine([[x,1.73,1.04],[x*.8+wobble,1.91,.84],[x*.54+wobble*.5,2.2,.57]],i%2?.007:.008,greyInk,temple);
+  inkLine([[x,1.73,-1.04],[x*.8-wobble,1.91,-.84],[x*.54-wobble*.5,2.2,-.57]],i%2?.007:.008,greyInk,temple);
 }
 // Temple side corridor, making the wall visibly continuous with the structure.
 box(2.55,1.65,.28,wallMat,root,-.72,.81,.7);
