@@ -43,6 +43,7 @@
 
 - **經驗：** 本機 Git commit 建立成功，但 Git push 因沒有可用的 credential 被拒。使用者已授權的 GitHub connector 可按檔案更新 remote，並逐檔 fetch 比對內容確認同步；這會建立 remote commits，但 commit SHA 不會等於本機 commit，也不應稱為 CLI `git push`。
 - **適用範圍：** 本機 push credential 無法取得、但已授權 GitHub connector 有 repo 寫入權限時的短期替代方案。後續若需要正常 Git 歷史，應在可用的認證環境中 fetch/pull 這些 remote commits 後再繼續。
+- **多檔同步補充：** 若 connector 提供 Git Data API，可把多個檔案 blob 放入以已知 tree 為基底的新 tree，建立單一 commit，再用預期舊 SHA 更新 branch ref；預期 SHA 不符時停止並重新讀取遠端。同步後 fetch 並比較 tree SHA，內容一致才可安全把本機分支對齊遠端。這仍不是 CLI `git push`，commit metadata 和 SHA 也可能不同。
 
 ## GitHub Pages 發布驗收
 

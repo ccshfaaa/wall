@@ -10,7 +10,7 @@
 - 已建立 GitHub Actions Pages 部署 workflow。
 - GitHub repository `ccshfaaa/wall` 已建立，最新場景與 knowledge 檔案已同步到 `main`。
 - 已建立 `knowledge/experience.md` 與 `knowledge/decision.md`，記錄可重用實作經驗和 Pages 設定建議。
-- 本機 commit `98f1b74` 已完成行動版階段；直接 `git push` 因環境沒有 GitHub 認證失敗。已用授權的 GitHub connector 將相同檔案內容提交到遠端 `main`（commit `72f48a3`），兩端 SHA 不同。
+- 本機 Git CLI 缺少 push 認證；已用授權的 GitHub connector 將行動版與角色打磨階段同步到 `main`（commits `72f48a3`、`61e9481`）。之後 fetch 比對確認兩邊 tree 相同，已將本機 `main` 對齊 `origin/main`。
 - 已加上程序化水墨紋理、封閉式屋脊和道士轉角揭露；1280×720 預覽已確認初始畫面、左右約 90 度視角和滾輪縮放。
 - 已調整直式視野與窄螢幕文案位置，加入雙指捏合縮放；在 390×844、844×390、1280×720 瀏覽器視窗檢查版面，拖曳揭露和重設視角可用。
 - 已為王七補上張口驚訝表情、腰帶和衣褶，為道士補上冠帽、鬍鬚和袍褶；行動版操作列會顯示單指環視與雙指縮放提示。
@@ -39,7 +39,7 @@
 
 ### 待完成
 - [x] 建立 GitHub repository `ccshfaaa/wall` 並同步專案檔案。
-- [ ] 在可用的 Git 認證環境中 fetch/pull 遠端 connector commits，恢復本機與 `origin/main` 的單一 Git 歷史（目前直接 push 缺少憑證）。
+- [x] fetch 遠端 connector commits，核對檔案 tree 後將本機 `main` 對齊 `origin/main`；目前 Git CLI push 仍缺少認證，後續階段沿用 connector 同步。
 - [ ] 以更完整的角色造型和水墨材質打磨目前幾何原型。
 
 
